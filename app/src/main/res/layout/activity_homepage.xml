@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imBtnAc"
                 style="@style/Widget.AppCompat.ImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="189dp"

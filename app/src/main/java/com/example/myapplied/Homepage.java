@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Homepage extends AppCompatActivity {
 
+    ImageButton btnAcceptance_of_accounts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,9 @@ public class Homepage extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStart() {
+        super.onStart();
+        btnAcceptance_of_accounts=findViewById(R.id.imBtnAc);
     }
 
     @Override
@@ -35,12 +38,10 @@ public class Homepage extends AppCompatActivity {
         int id =item.getItemId();
         if(id==R.id.itemLogout) {
             FirebaseAuth.getInstance().signOut();
-            Intent intent =new Intent(getApplicationContext(), com.example.myapplied.MainActivity.class);
-            this.onDestroy();
-            startActivity(intent);
-
+            startActivity(new Intent(Homepage.this,MainActivity.class));
+            finish();
         }
-        return true;
+        return false;
     }
 
     public void btnAcceptance_of_accounts(View view) {
