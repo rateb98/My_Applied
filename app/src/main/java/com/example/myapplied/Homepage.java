@@ -17,17 +17,14 @@ public class Homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        if (1==1){// gh
-             }
-        else{}
     }
 
-    @Override//2233
+    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
-    @Override//33
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
