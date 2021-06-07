@@ -19,7 +19,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
     }
 
-    @Override
+    @Override//22
     protected void onDestroy() {
         super.onDestroy();
     }
