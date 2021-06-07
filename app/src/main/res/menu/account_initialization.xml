@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemConvertPro"
+        android:title="إعداد حساب دكتور/معيد"
+        />
+    <item
+        android:id="@+id/itemConvertStu"
+        android:title="إعداد حساب طالب"
+        />
+</menu>
