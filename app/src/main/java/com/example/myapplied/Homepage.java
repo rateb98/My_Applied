@@ -19,14 +19,15 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         if (1==1){// gh
              }
+        else{}
     }
 
-    @Override//22
+    @Override//2233
     protected void onDestroy() {
         super.onDestroy();
     }
 
-    @Override
+    @Override//33
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
