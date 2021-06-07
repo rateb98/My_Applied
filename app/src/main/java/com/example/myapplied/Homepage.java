@@ -21,7 +21,7 @@ public class Homepage extends AppCompatActivity {
              }
     }
 
-    @Override
+    @Override//22
     protected void onDestroy() {
         super.onDestroy();
     }
