@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".SingUp">
 
+    <include
+        android:id="@+id/tool_Bar"
+        layout="@layout/tool_bar"
+        />
     <EditText
         android:id="@+id/edEmail"
         android:layout_width="250dp"
@@ -41,19 +45,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edEmail" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="104dp"
-        android:text="إنشاء حساب"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnCreate"

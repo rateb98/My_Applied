@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,10 @@ public class acceptance_of_accounts extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         UserList =new ArrayList<>();
+        Toolbar toolbar=findViewById(R.id.tool_Bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("الموافقة على الحسابات");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

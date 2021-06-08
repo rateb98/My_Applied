@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplied">
+        <activity android:name=".Group_chat"></activity>
         <activity android:name=".acceptance_of_accounts" />
         <activity android:name=".Waiting_for_acceptance" />
         <activity android:name=".Account_completion" />

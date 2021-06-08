@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplied.Model.Users;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +26,10 @@ public class SingUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
+        Toolbar toolbar=findViewById(R.id.tool_Bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("إنشاء حساب");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mAuth = FirebaseAuth.getInstance();
     }
 
