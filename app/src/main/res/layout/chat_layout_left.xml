@@ -20,5 +20,16 @@
         android:padding="8dp"
         android:background="@drawable/background_left"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/profile_image"
+        android:layout_marginHorizontal="15dp"
+        android:text="name"
+        android:id="@+id/sender_massage"
+        android:padding="2dp"
+        android:textSize="8dp"
+        android:background="@drawable/background_left"/>
+
 
 </RelativeLayout>
