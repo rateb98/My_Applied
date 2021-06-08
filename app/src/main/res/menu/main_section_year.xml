@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:id="@+id/secTecYe1"
+    android:title="تقنيات حاسوب سنة أولى"
+    />
+    <item
+        android:id="@+id/secTecYe2"
+        android:title="تقنيات حاسوب سنة ثانية"
+        />
+    <item
+        android:id="@+id/secTecYe3"
+        android:title="تقنيات حاسوب سنة ثالثة"
+        />
+    <item
+        android:id="@+id/secTecYe4"
+        android:title="تقنيات حاسوب سنة رابعة"
+        />
+    <item
+        android:id="@+id/secMecYe1"
+        android:title="ميكاترونكس سنة أولى"
+        />
+    <item
+        android:id="@+id/secMecYe2"
+        android:title="ميكاترونكس سنة ثانية"
+        />
+    <item
+        android:id="@+id/secMecYe3"
+        android:title="ميكاترونكس سنة ثالثة"
+        />
+    <item
+        android:id="@+id/secMecYe4"
+        android:title="ميكاترونكس سنة رابعة"
+        />
+
+
+</menu>

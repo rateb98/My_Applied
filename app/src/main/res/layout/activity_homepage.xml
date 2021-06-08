@@ -43,6 +43,18 @@
             android:visibility="gone"
             tools:srcCompat="@drawable/btngro" />
 
+        <ImageButton
+            android:id="@+id/imBtnSendPro"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="189dp"
+            android:background="#00FFFFFF"
+            android:onClick="clickSendPro"
+            android:scaleType="fitStart"
+            android:src="@drawable/pro1"
+            android:visibility="gone"
+            tools:srcCompat="@drawable/pro1" />
+
 </LinearLayout>
 
 </LinearLayout>

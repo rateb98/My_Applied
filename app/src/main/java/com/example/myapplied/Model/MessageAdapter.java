@@ -61,16 +61,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         mRef.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 Users user=snapshot.getValue(Users.class);
-                 nameSender=user.getFirstName()+" "+user.getLastName();
+                 Users user = snapshot.getValue(Users.class);
+                 nameSender = user.getFirstName() + " " + user.getLastName();
                  if (!chat.getSender().equals(fuser.getUid()))
                      holder.sender_massage.setText(nameSender);
-                 if(user.getAccount().equals("طالب"))
+                 if (user.getAccount().equals("طالب"))
                      holder.profileImage.setImageResource(R.mipmap.stu1);
-                 if(user.getAccount().equals("طالب/Admin"))
+                 if (user.getAccount().equals("طالب/Admin"))
                      holder.profileImage.setImageResource(R.mipmap.stu1);
-                 if(user.getAccount().equals("دكتور/معيد"))
+                 if (user.getAccount().equals("دكتور/معيد")) {
                      holder.profileImage.setImageResource(R.mipmap.pro);
+                     holder.info_massage.setVisibility(View.VISIBLE);
+                     holder.info_massage.setText(chat.getReceiver());
+                 }
              }
 
              @Override
@@ -78,10 +81,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
              }
          }) ;
-
         holder.show_massage.setText(chat.getMassage());
-        holder.profileImage.setImageResource(R.mipmap.stu1);
-
     }
     @Override
     public int getItemCount() {
@@ -90,13 +90,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView show_massage,sender_massage;
+        public TextView show_massage,sender_massage,info_massage;
         public ImageView profileImage;
 
         public ViewHolder(View itemView)
         {
             super(itemView);
             show_massage=itemView.findViewById(R.id.show_massage);
+            info_massage=itemView.findViewById(R.id.show_info);
             profileImage=itemView.findViewById(R.id.profile_image);
             sender_massage=itemView.findViewById(R.id.sender_massage);
         }

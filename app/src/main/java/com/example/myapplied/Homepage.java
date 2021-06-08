@@ -16,13 +16,14 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Homepage extends AppCompatActivity {
 
     String userID,account,section,academic_year;
-    ImageButton btnAcceptance_of_accounts,btnGroup;
+    ImageButton btnAcceptance_of_accounts,btnGroup,btnSendPro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         btnAcceptance_of_accounts=findViewById(R.id.imBtnAc);
         btnGroup=findViewById(R.id.imBtnGr);
+        btnSendPro=findViewById(R.id.imBtnSendPro);
         Toolbar toolbar=findViewById(R.id.tool_Bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getStringExtra("username"));
@@ -39,6 +40,10 @@ public class Homepage extends AppCompatActivity {
         if(account.equals("طالب"))
         {
             btnGroup.setVisibility(View.VISIBLE);
+        }
+        if(account.equals("دكتور/معيد"))
+        {
+            btnSendPro.setVisibility(View.VISIBLE);
         }
     }
 
@@ -70,5 +75,11 @@ public class Homepage extends AppCompatActivity {
         intent2.putExtra("groupIfo",section+"/"+academic_year);
         intent2.putExtra("userId",userID);
         startActivity(intent2);
+    }
+
+    public void clickSendPro(View view) {
+        Intent intent3 =new Intent(this,com.example.myapplied.Pro_Massage.class);
+        intent3.putExtra("userId",userID);
+        startActivity(intent3);
     }
 }
