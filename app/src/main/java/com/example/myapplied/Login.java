@@ -87,6 +87,8 @@ public class Login extends AppCompatActivity {
                        Home.putExtra("username",user.getFirstName()+" "+user.getLastName());
                        Home.putExtra("userId",user.getId());
                        Home.putExtra("account",user.getAccount());
+                       Home.putExtra("section",user.getSection());
+                       Home.putExtra("academic_year",user.getAcademic_year());
                        startActivity(Home);
                    }
                 }

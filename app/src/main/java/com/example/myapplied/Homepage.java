@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Homepage extends AppCompatActivity {
 
-    String userID,account;
+    String userID,account,section,academic_year;
     ImageButton btnAcceptance_of_accounts,btnGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class Homepage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         userID=getIntent().getStringExtra("userId");
         account=getIntent().getStringExtra("account");
+        section=getIntent().getStringExtra("section");
+        academic_year=getIntent().getStringExtra("academic_year");
         if(account.equals("طالب/Admin"))
         {
             btnAcceptance_of_accounts.setVisibility(View.VISIBLE);
@@ -65,6 +67,8 @@ public class Homepage extends AppCompatActivity {
 
     public void clickGroup(View view) {
         Intent intent2 =new Intent(this,com.example.myapplied.Group_chat.class);
+        intent2.putExtra("groupIfo",section+"/"+academic_year);
+        intent2.putExtra("userId",userID);
         startActivity(intent2);
     }
 }
