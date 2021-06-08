@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                         } else if (user.getReady().equals("1")) {
                             Intent Home = new Intent(getApplicationContext(), com.example.myapplied.Homepage.class);
                             Home.putExtra("username",user.getFirstName()+" "+user.getLastName());
+                            Home.putExtra("userId",user.getId());
+                            Home.putExtra("account",user.getAccount());
                             startActivity(Home);
                         }
                     }

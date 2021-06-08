@@ -25,20 +25,24 @@
         android:layout_width="wrap_content"
         android:layout_height="189dp"
         android:background="#00FFFFFF"
-        android:onClick="btnAcceptance_of_accounts"
+        android:onClick="clickAcceptance_of_accounts"
         android:scaleType="fitStart"
         android:src="@drawable/btn1"
+        android:visibility="gone"
         tools:srcCompat="@drawable/btn1" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="189dp"
-        android:background="#00FFFFFF"
-        android:onClick="btnGroup"
-        android:scaleType="fitStart"
-        android:src="@drawable/btngro"
-        app:srcCompat="@drawable/btngro" />
+        <ImageButton
+            android:id="@+id/imBtnGr"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="189dp"
+            android:background="#00FFFFFF"
+            android:onClick="clickGroup"
+            android:scaleType="fitStart"
+            android:src="@drawable/btngro"
+            android:visibility="gone"
+            tools:srcCompat="@drawable/btngro" />
+
 </LinearLayout>
 
 </LinearLayout>

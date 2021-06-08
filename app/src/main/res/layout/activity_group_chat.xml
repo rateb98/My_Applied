@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
          <androidx.appcompat.widget.Toolbar
-             android:id="@+id/toolBar"
+             android:id="@+id/tool_Bar"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -22,7 +22,6 @@
                  android:layout_height="wrap_content"
                  android:id="@+id/txInfo"
                  android:textSize="18dp"
-                 android:text="السنة الرابعة/تقنيات حاسوب"
                  android:layout_marginLeft="25dp"
                  android:textColor="#fff"
                  android:textStyle="bold"
