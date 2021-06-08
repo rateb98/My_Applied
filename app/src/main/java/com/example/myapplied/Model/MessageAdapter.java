@@ -65,6 +65,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                  nameSender=user.getFirstName()+" "+user.getLastName();
                  if (!chat.getSender().equals(fuser.getUid()))
                      holder.sender_massage.setText(nameSender);
+                 if(user.getAccount().equals("طالب"))
+                     holder.profileImage.setImageResource(R.mipmap.stu1);
+                 if(user.getAccount().equals("طالب/Admin"))
+                     holder.profileImage.setImageResource(R.mipmap.stu1);
+                 if(user.getAccount().equals("دكتور/معيد"))
+                     holder.profileImage.setImageResource(R.mipmap.pro);
              }
 
              @Override
