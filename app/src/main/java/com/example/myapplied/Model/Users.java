@@ -3,13 +3,13 @@ package com.example.myapplied.Model;
 public class Users {
 
 
-    public String id;
-    public String firstName;
-    public String lastName;
-    public String section;
-    public String academic_year;
-    public String account;
-    public String ready;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String section;
+    private String academic_year;
+    private String account;
+    private String ready;
 
 
     public Users()
