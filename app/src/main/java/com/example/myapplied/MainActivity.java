@@ -52,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
                         if (user.getReady().equals("0")) {
                             Intent Account_completion = new Intent(getApplicationContext(), com.example.myapplied.Account_completion.class);
                             startActivity(Account_completion);
+                            finish();
                         } else if (user.getReady().equals("-1") || snapshot.getValue().toString().equals("-2")) {
                             Intent Waiting_for_acceptance = new Intent(getApplicationContext(), com.example.myapplied.Waiting_for_acceptance.class);
                             startActivity(Waiting_for_acceptance);
+                            finish();
                         } else if (user.getReady().equals("1")) {
                             Intent Home = new Intent(getApplicationContext(), com.example.myapplied.Homepage.class);
                             Home.putExtra("username",user.getFirstName()+" "+user.getLastName());
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             Home.putExtra("section",user.getSection());
                             Home.putExtra("academic_year",user.getAcademic_year());
                             startActivity(Home);
+                            finish();
                         }
                     }
 

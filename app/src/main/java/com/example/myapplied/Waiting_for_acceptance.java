@@ -54,11 +54,8 @@ public class Waiting_for_acceptance extends AppCompatActivity {
 
 
     public void closeApp(View view) {
-        Intent intent=new Intent(getApplicationContext(),com.example.myapplied.MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("EXIT",true);
-        startActivity(intent);
-        System.exit(0);
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this,MainActivity.class));
         finish();
     }
 }

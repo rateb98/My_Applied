@@ -43,22 +43,29 @@ public class SingUp extends AppCompatActivity {
         String email = edEmail.getText().toString();
         String password = edPassword.getText().toString();
         if (!email.isEmpty() && !password.isEmpty()) {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, task ->
-                    {
-                        if (task.isSuccessful()) {
-                            FirebaseUser User = mAuth.getCurrentUser();
-                            String ui=User.getUid();
-                            myRef = FirebaseDatabase.getInstance().getReference("Users").child(ui);
-                            Users newUser =new Users(ui,"def","def","def","def","def","0");
-                            myRef.setValue(newUser).addOnCompleteListener(this, task1 -> { });
-                            Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
-                            SendEmailVerification();
-                        } else {
-                            Toast.makeText(getApplicationContext(), task.getException().toString(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            if(password.length()>=6) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, task ->
+                        {
+                            if (task.isSuccessful()) {
+                                FirebaseUser User = mAuth.getCurrentUser();
+                                String ui = User.getUid();
+                                myRef = FirebaseDatabase.getInstance().getReference("Users").child(ui);
+                                Users newUser = new Users(ui, "def", "def", "def", "def", "def", "0");
+                                myRef.setValue(newUser).addOnCompleteListener(this, task1 -> {
+                                });
+                                Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+                                SendEmailVerification();
+                            } else {
+                                Toast.makeText(getApplicationContext(), task.getException().toString(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "يجب أن تكون كلمة المرور من 6 محارف أو أكثر", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getApplicationContext(), "الرجاء ملء خانة البريد الإلكتروني و كلمة المرور", Toast.LENGTH_SHORT).show();
         }

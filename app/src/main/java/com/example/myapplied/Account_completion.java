@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplied.Model.Users;
 import com.google.android.material.textfield.TextInputLayout;
@@ -35,6 +36,10 @@ public class Account_completion extends AppCompatActivity {
         textInputLayout2 = findViewById(R.id.textInputLayout2);
         edFirstName=findViewById(R.id.edFirstName);
         edLastName=findViewById(R.id.edLastName);
+        Toolbar toolbar=findViewById(R.id.tool_Bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         String[] Section = {"تقنيات حاسوب", "ميكاترونكس"};
         String[] Academic_year = {"السنة الأولى", "السنة الثانية", "السنة الثالثة", "السنة الرابعة"};
         //القسم
