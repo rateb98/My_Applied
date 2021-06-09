@@ -1,6 +1,7 @@
 package com.example.myapplied.Model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     DatabaseReference mRef;
     FirebaseUser fuser;
     String nameSender;
+
     public MessageAdapter(Context context ,List<Chat> chatList,String imageUrl)
     {
         this.context=context;
@@ -71,8 +73,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                      holder.profileImage.setImageResource(R.mipmap.stu1);
                  if (user.getAccount().equals("دكتور/معيد")) {
                      holder.profileImage.setImageResource(R.mipmap.pro);
+
+                     if (chat.getSender().equals(fuser.getUid()))
+                     {
                      holder.info_massage.setVisibility(View.VISIBLE);
                      holder.info_massage.setText(chat.getReceiver());
+                 }
+                     else
+                     {
+                         holder.sender_massage.setBackgroundColor(Color.parseColor("#FF5BB6FD"));
+                     }
                  }
              }
 
