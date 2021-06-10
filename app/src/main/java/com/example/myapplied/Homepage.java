@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Homepage extends AppCompatActivity {
 
     String userID,account,section,academic_year;
-    ImageButton btnAcceptance_of_accounts,btnGroup,btnSendPro;
+    ImageButton btnAcceptance_of_accounts,btnGroup,btnSendPro,btnSettingSchedule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class Homepage extends AppCompatActivity {
         btnAcceptance_of_accounts=findViewById(R.id.imBtnAc);
         btnGroup=findViewById(R.id.imBtnGr);
         btnSendPro=findViewById(R.id.imBtnSendPro);
+        btnSettingSchedule=findViewById(R.id.imBtnSettingSchedule);
         Toolbar toolbar=findViewById(R.id.tool_Bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getStringExtra("username"));
@@ -36,6 +37,7 @@ public class Homepage extends AppCompatActivity {
         {
             btnAcceptance_of_accounts.setVisibility(View.VISIBLE);
             btnGroup.setVisibility(View.VISIBLE);
+            btnSettingSchedule.setVisibility(View.VISIBLE);
         }
         if(account.equals("طالب"))
         {
@@ -81,5 +83,10 @@ public class Homepage extends AppCompatActivity {
         Intent intent3 =new Intent(this,com.example.myapplied.Pro_Massage.class);
         intent3.putExtra("userId",userID);
         startActivity(intent3);
+    }
+
+    public void clickSettingSchedule(View view) {
+        Intent intent4 =new Intent(this,com.example.myapplied.upload_weekly_schedule.class);
+        startActivity(intent4);
     }
 }

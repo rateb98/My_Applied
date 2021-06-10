@@ -55,6 +55,17 @@
             android:visibility="gone"
             tools:srcCompat="@drawable/pro1" />
 
+        <ImageButton
+            android:id="@+id/imBtnSettingSchedule"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="189dp"
+            android:background="#00FFFFFF"
+            android:scaleType="fitStart"
+            android:onClick="clickSettingSchedule"
+            android:src="@drawable/btn2"
+            android:visibility="gone"
+            tools:srcCompat="@drawable/btn2" />
 </LinearLayout>
 
 </LinearLayout>

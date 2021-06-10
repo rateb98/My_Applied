@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".upload_weekly_schedule">
+
+    <include
+        android:id="@+id/tool_Bar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+
+
+    <Button
+        android:text="رفع برنامج السنة الأولى تقنيات حاسوب"
+        android:layout_marginTop="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea1Tec"/>
+
+    <Button
+        android:text="رفع برنامج السنة الثانية تقنيات حاسوب"
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea2Tec"/>
+    <Button
+        android:text="رفع برنامج السنة الثالثة تقنيات حاسوب"
+        android:layout_marginTop="225dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea3Tec"/>
+    <Button
+        android:text="رفع برنامج السنة الرابعة تقنيات حاسوب"
+        android:layout_marginTop="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea4Tec"/>
+    <Button
+        android:text="رفع برنامج السنة الأولى ميكاتروكس"
+        android:layout_marginTop="375dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea1Mec"/>
+    <Button
+        android:text="رفع برنامج السنة الثانية ميكاترونكس"
+        android:layout_marginTop="450dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea2Mec"/>
+    <Button
+        android:text="رفع برنامج السنة الثالثة ميكاترونكس"
+        android:layout_marginTop="525dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea3Mec"/>
+    <Button
+        android:text="رفع برنامج السنة الرابعة ميكاترونكس"
+        android:layout_marginTop="600dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUpYea4Mec"/>
+</RelativeLayout>
+
+</RelativeLayout>
