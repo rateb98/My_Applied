@@ -1,6 +1,7 @@
 package com.example.myapplied.Model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,46 +42,95 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Users user=usersList.get(position);
-        holder.txMessage.setVisibility(View.GONE);
-        holder.userName.setText(user.getFirstName()+" "+user.getLastName());
-
-        if(user.getAccount().equals("طالب"))
+        if (user.getReady().equals("-1"))
         {
-            holder.profileImage.setImageResource(R.mipmap.stu1);
-            holder.secYeName.setText(user.getSection()+"/"+user.getAcademic_year());
+            holder.userName.setText(user.getFirstName() + " " + user.getLastName());
+            holder.btnAc.setBackgroundColor(Color.GREEN);
+            holder.btnBl.setBackgroundColor(Color.RED);
+            if (user.getAccount().equals("طالب")) {
+                holder.profileImage.setImageResource(R.mipmap.stu1);
+                holder.secYeName.setText(user.getSection() + "/" + user.getAcademic_year());
+            } else if (user.getAccount().equals("دكتور/معيد")) {
+                holder.secYeName.setVisibility(View.GONE);
+                holder.profileImage.setImageResource(R.mipmap.pro);
+            }
+
+
+            holder.btnAc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Users upUser = usersList.get(position);
+                    upUser.setReady("1");
+                    myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
+                    myRef.setValue(upUser);
+                }
+            });
+            holder.btnBl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Users upUser = usersList.get(position);
+                    upUser.setReady("-2");
+                    myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
+                    myRef.setValue(upUser);
+
+                }
+            });
         }
-        else if (user.getAccount().equals("دكتور/معيد"))
+        else if (user.getReady().equals("1"))
         {
-            holder.secYeName.setVisibility(View.GONE);
-            holder.profileImage.setImageResource(R.mipmap.pro);
+            holder.userName.setText(user.getFirstName() + " " + user.getLastName());
+            holder.btnAc.setText("حساب مقبول");
+            holder.btnAc.setEnabled(false);
+            holder.btnBl.setBackgroundColor(Color.RED);
+            if (user.getAccount().equals("طالب")) {
+                holder.profileImage.setImageResource(R.mipmap.stu1);
+                holder.secYeName.setText(user.getSection() + "/" + user.getAcademic_year());
+            } else if (user.getAccount().equals("دكتور/معيد")) {
+                holder.secYeName.setVisibility(View.GONE);
+                holder.profileImage.setImageResource(R.mipmap.pro);
+            }
+
+
+
+            holder.btnBl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Users upUser = usersList.get(position);
+                    upUser.setReady("-2");
+                    myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
+                    myRef.setValue(upUser);
+                }
+            });
+
+        }
+        else if (user.getReady().equals("-2"))
+        {
+            holder.userName.setText(user.getFirstName() + " " + user.getLastName());
+            holder.btnBl.setText("حساب مرفوض");
+            holder.btnBl.setEnabled(false);
+            holder.btnAc.setBackgroundColor(Color.GREEN);
+            if (user.getAccount().equals("طالب")) {
+                holder.profileImage.setImageResource(R.mipmap.stu1);
+                holder.secYeName.setText(user.getSection() + "/" + user.getAcademic_year());
+            } else if (user.getAccount().equals("دكتور/معيد")) {
+                holder.secYeName.setVisibility(View.GONE);
+                holder.profileImage.setImageResource(R.mipmap.pro);
+            }
+
+
+
+            holder.btnAc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Users upUser = usersList.get(position);
+                    upUser.setReady("1");
+                    myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
+                    myRef.setValue(upUser);
+                }
+            });
+
         }
 
-        holder.btnAc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Users upUser = usersList.get(position);
-                upUser.setReady("1");
-                myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
-                myRef.setValue(upUser);
-                holder.btnAc.setVisibility(View.GONE);
-                holder.btnBl.setVisibility(View.GONE);
-                holder.txMessage.setVisibility(View.VISIBLE);
-                holder.txMessage.setText("تم قبول الحساب");
-            }
-        });
-        holder.btnBl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Users upUser = usersList.get(position);
-                upUser.setReady("-2");
-                myRef = FirebaseDatabase.getInstance().getReference("Users").child(upUser.getId());
-                myRef.setValue(upUser);
-                holder.btnAc.setVisibility(View.GONE);
-                holder.btnBl.setVisibility(View.GONE);
-                holder.txMessage.setVisibility(View.VISIBLE);
-                holder.txMessage.setText("تم رفض الحساب");
-            }
-        });
     }
     @Override
     public int getItemCount() {
@@ -89,7 +139,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView userName,secYeName,txMessage;
+        public TextView userName,secYeName;
         public ImageView profileImage;
         public Button btnAc,btnBl;
 
@@ -102,7 +152,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             secYeName =itemView.findViewById(R.id.txSecYe);
             btnAc=itemView.findViewById(R.id.btnAc);
             btnBl=itemView.findViewById(R.id.btnBl);
-            txMessage=itemView.findViewById(R.id.txMessage);
         }
     }
 }
