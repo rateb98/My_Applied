@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".upload_weekly_schedule">
 
+
     <include
         android:id="@+id/tool_Bar"
         layout="@layout/tool_bar"
@@ -14,10 +15,8 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp">
-
-
-
+    android:layout_margin="16dp"
+    android:id="@+id/MainRelative">
     <Button
         android:text="رفع برنامج السنة الأولى تقنيات حاسوب"
         android:layout_marginTop="75dp"
@@ -67,6 +66,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnUpYea4Mec"/>
+
+
 </RelativeLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"/>
 </RelativeLayout>
