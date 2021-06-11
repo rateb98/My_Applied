@@ -1,18 +1,28 @@
 package com.example.myapplied.Model;
 
 public class Chat {
+    private String id;
     private String sender;
     private String receiver;
     private String massage;
 
 
-    public Chat(String sender, String receiver, String massage) {
+    public Chat(String id,String sender, String receiver, String massage) {
+        this.id=id;
         this.sender = sender;
         this.receiver = receiver;
         this.massage = massage;
     }
 
     public Chat() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSender() {

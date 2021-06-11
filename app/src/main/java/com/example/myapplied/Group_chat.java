@@ -29,10 +29,8 @@ public class Group_chat extends AppCompatActivity {
     ImageButton image_send;
     EditText text_send;
     String userId,groupInfo;
-    ImageButton imgBtnDelete;
     MessageAdapter messageAdapter;
     List<Chat> chatList;
-
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +44,6 @@ public class Group_chat extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         image_send=findViewById(R.id.btn_send);
         text_send=findViewById(R.id.text_send);
-        imgBtnDelete=findViewById(R.id.btn_delete);
-
-
         recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
@@ -77,10 +72,12 @@ public class Group_chat extends AppCompatActivity {
     {
         DatabaseReference mRef= FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
+        String id=mRef.push().getKey();
+        hashMap.put("id",id);
         hashMap.put("sender",sender);
         hashMap.put("receiver",receiver);
         hashMap.put("massage",massage);
-        mRef.child("Chats").push().setValue(hashMap);
+        mRef.child("Chats").child(id).setValue(hashMap);
     }
 
     private void readMessage(final String myId,final String groupInfo,final String imageUrl)

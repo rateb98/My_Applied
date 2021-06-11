@@ -32,9 +32,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private String imageUrl;
     DatabaseReference mRef;
     DatabaseReference mRef1=FirebaseDatabase.getInstance().getReference("Chats");
+    DatabaseReference mRef2=FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
     FirebaseUser fuser;
     String nameSender;
-    int position1;
     public MessageAdapter(Context context ,List<Chat> chatList,String imageUrl)
     {
         this.context=context;
@@ -58,7 +58,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
-        position1=position;
         Chat chat =chatList.get(position);
 
         fuser= FirebaseAuth.getInstance().getCurrentUser();
@@ -70,16 +69,36 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                  nameSender = user.getFirstName() + " " + user.getLastName();
                  if (!chat.getSender().equals(fuser.getUid()))
                      holder.sender_massage.setText(nameSender);
-                 if (user.getAccount().equals("طالب"))
+                 if (user.getAccount().equals("طالب")) {
                      holder.profileImage.setImageResource(R.mipmap.stu1);
-                 if (user.getAccount().equals("طالب/Admin"))
+                     mRef2.addValueEventListener(new ValueEventListener() {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                             Users userCur = snapshot1.getValue(Users.class);
+                             if (userCur.getAccount().equals("طالب/Admin")) {
+                                    holder.imgBtnDeleteAdmin.setVisibility(View.VISIBLE);
+                                    holder.imgBtnDeleteAdmin.setOnLongClickListener(new View.OnLongClickListener() {
+                                        @Override
+                                        public boolean onLongClick(View v) {
+                                            Chat chat=chatList.get(position);
+                                            mRef1.child(chat.getId()).removeValue();
+                                            return false;
+                                        }
+                                    });
+                             }
+                         }
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError error) {
+                         }
+                     });
+                 }
+                 if (user.getAccount().equals("طالب/Admin")) {
                      holder.profileImage.setImageResource(R.mipmap.stu1);
+                 }
                  if (user.getAccount().equals("دكتور/معيد")) {
                      holder.profileImage.setImageResource(R.mipmap.pro);
-
                      if (chat.getSender().equals(fuser.getUid()))
                      {
-                     holder.info_massage.setVisibility(View.VISIBLE);
                      holder.info_massage.setText(chat.getReceiver());
                  }
                      else
@@ -95,7 +114,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
              }
          }) ;
         holder.show_massage.setText(chat.getMassage());
-
+        holder.imgBtnDelete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Chat chat=chatList.get(position);
+                mRef1.child(chat.getId()).removeValue();
+                return false;
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -106,16 +132,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public TextView show_massage,sender_massage,info_massage;
         public ImageView profileImage;
-        public ImageButton imgBtnDelete;
+        public ImageButton imgBtnDelete,imgBtnDeleteAdmin;
 
         public ViewHolder(View itemView)
         {
             super(itemView);
+
+            imgBtnDelete=itemView.findViewById(R.id.imgBtn_Delete);
             show_massage=itemView.findViewById(R.id.show_massage);
             info_massage=itemView.findViewById(R.id.show_info);
             profileImage=itemView.findViewById(R.id.profile_image);
             sender_massage=itemView.findViewById(R.id.sender_massage);
-            imgBtnDelete=itemView.findViewById(R.id.btn_delete);
+            imgBtnDeleteAdmin=itemView.findViewById(R.id.imgBtn_DeleteAdmin);
         }
     }
 

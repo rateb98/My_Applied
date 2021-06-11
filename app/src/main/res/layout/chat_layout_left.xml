@@ -19,7 +19,24 @@
         android:textSize="18dp"
         android:padding="8dp"
         android:background="@drawable/background_left"/>
-
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/show_massage"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:id="@+id/imgBtn_Delete"
+        android:background="@drawable/ic_baseline_delete"
+        />
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/show_massage"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:id="@+id/imgBtn_DeleteAdmin"
+        android:background="@drawable/ic_baseline_delete"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +47,5 @@
         android:padding="2dp"
         android:textSize="8dp"
         android:background="@drawable/background_left"/>
-
 
 </RelativeLayout>

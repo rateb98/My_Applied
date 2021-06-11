@@ -86,10 +86,12 @@ public class Pro_Massage extends AppCompatActivity {
     {
         DatabaseReference mRef= FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
+        String id=mRef.push().getKey();
+        hashMap.put("id",id);
         hashMap.put("sender",sender);
         hashMap.put("receiver",receiver);
         hashMap.put("massage",massage);
-        mRef.child("Chats").push().setValue(hashMap);
+        mRef.child("Chats").child(id).setValue(hashMap);
     }
 
     @Override
