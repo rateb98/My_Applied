@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,9 +31,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private List<Chat> chatList;
     private String imageUrl;
     DatabaseReference mRef;
+    DatabaseReference mRef1=FirebaseDatabase.getInstance().getReference("Chats");
     FirebaseUser fuser;
     String nameSender;
-
+    int position1;
     public MessageAdapter(Context context ,List<Chat> chatList,String imageUrl)
     {
         this.context=context;
@@ -56,6 +58,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
+        position1=position;
         Chat chat =chatList.get(position);
 
         fuser= FirebaseAuth.getInstance().getCurrentUser();
@@ -92,6 +95,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
              }
          }) ;
         holder.show_massage.setText(chat.getMassage());
+
     }
     @Override
     public int getItemCount() {
@@ -102,6 +106,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public TextView show_massage,sender_massage,info_massage;
         public ImageView profileImage;
+        public ImageButton imgBtnDelete;
 
         public ViewHolder(View itemView)
         {
@@ -110,6 +115,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             info_massage=itemView.findViewById(R.id.show_info);
             profileImage=itemView.findViewById(R.id.profile_image);
             sender_massage=itemView.findViewById(R.id.sender_massage);
+            imgBtnDelete=itemView.findViewById(R.id.btn_delete);
         }
     }
 

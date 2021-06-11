@@ -29,7 +29,7 @@ public class Group_chat extends AppCompatActivity {
     ImageButton image_send;
     EditText text_send;
     String userId,groupInfo;
-
+    ImageButton imgBtnDelete;
     MessageAdapter messageAdapter;
     List<Chat> chatList;
 
@@ -46,6 +46,7 @@ public class Group_chat extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         image_send=findViewById(R.id.btn_send);
         text_send=findViewById(R.id.text_send);
+        imgBtnDelete=findViewById(R.id.btn_delete);
 
 
         recyclerView=findViewById(R.id.recycler_view);
@@ -106,6 +107,5 @@ public class Group_chat extends AppCompatActivity {
 
             }
         });
-
     }
 }
