@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplied.Model.Users;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar=findViewById(R.id.tool_Bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("تطبيقيتي");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         AutoLogin();
     }
 
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent Account_completion = new Intent(getApplicationContext(), com.example.myapplied.Account_completion.class);
                             startActivity(Account_completion);
                             finish();
-                        } else if (user.getReady().equals("-1") || snapshot.getValue().toString().equals("-2")) {
+                        } else if (user.getReady().equals("-1") || user.getReady().equals("-2")) {
                             Intent Waiting_for_acceptance = new Intent(getApplicationContext(), com.example.myapplied.Waiting_for_acceptance.class);
                             startActivity(Waiting_for_acceptance);
                             finish();

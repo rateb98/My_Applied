@@ -57,7 +57,7 @@ public class SingUp extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
                                 SendEmailVerification();
                             } else {
-                                Toast.makeText(getApplicationContext(), task.getException().toString(),
+                                Toast.makeText(getApplicationContext(), task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }
                         });

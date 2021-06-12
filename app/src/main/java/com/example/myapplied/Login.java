@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,15 @@ public class Login extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("تسجيل الدخول");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        TextView forgetPassword=findViewById(R.id.forgetPassword);
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),com.example.myapplied.ForgetPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void LoginAccount(View view) {
@@ -51,7 +60,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             VerifyEmailAddress();
                         } else {
-                            Toast.makeText(getApplicationContext(), task.getException().toString(),
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -75,9 +84,9 @@ public class Login extends AppCompatActivity {
                    {
                        Intent Account_completion = new Intent(getApplicationContext(), com.example.myapplied.Account_completion.class);
                        startActivity(Account_completion);
-                       finish();
+                       finishActivity(0);
                    }
-                   else if(user.getReady().equals("-1")||snapshot.getValue().toString().equals("-2"))
+                   else if(user.getReady().equals("-1")||user.getReady().equals("-2"))
                    {
                        Intent Waiting_for_acceptance = new Intent(getApplicationContext(), com.example.myapplied.Waiting_for_acceptance.class);
                        startActivity(Waiting_for_acceptance);
@@ -93,6 +102,7 @@ public class Login extends AppCompatActivity {
                        Home.putExtra("academic_year",user.getAcademic_year());
                        startActivity(Home);
                        finish();
+
                    }
                 }
 

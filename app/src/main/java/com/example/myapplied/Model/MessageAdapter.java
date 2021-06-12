@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -85,6 +86,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                                             return false;
                                         }
                                     });
+                                 holder.imgBtnDeleteAdmin.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Toast.makeText(context, "انقر نقرة طويلة لحذف الرسالة",Toast.LENGTH_SHORT).show();
+                                     }
+                                 });
                              }
                          }
                          @Override
@@ -97,10 +104,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                  }
                  if (user.getAccount().equals("دكتور/معيد")) {
                      holder.profileImage.setImageResource(R.mipmap.pro);
-                     if (chat.getSender().equals(fuser.getUid()))
-                     {
-                     holder.info_massage.setText(chat.getReceiver());
-                 }
+                     if (chat.getSender().equals(fuser.getUid())) {
+                         holder.info_massage.setVisibility(View.VISIBLE);
+                         holder.info_massage.setText(chat.getReceiver());
+                     }
                      else
                      {
                          holder.sender_massage.setBackgroundColor(Color.parseColor("#FF5BB6FD"));
@@ -120,6 +127,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                 Chat chat=chatList.get(position);
                 mRef1.child(chat.getId()).removeValue();
                 return false;
+            }
+        });
+        holder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "انقر نقرة طويلة لحذف الرسالة",Toast.LENGTH_SHORT).show();
             }
         });
     }

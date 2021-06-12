@@ -7,12 +7,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="تطبيقيتي"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplied">
-        <activity android:name=".schedule_view"></activity>
+        <activity android:name=".ForgetPassword"></activity>
+        <activity android:name=".schedule_view" />
         <activity android:name=".upload_weekly_schedule" />
         <activity android:name=".Pro_Massage" />
         <activity android:name=".Group_chat" />
